@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Crypto Trading App Design System - Dark Modern Theme */
+
+@layer base {
+  :root {
+    /* Dark Theme Base Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Primary - Electric Purple */
+    --primary: 271 76% 53%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 271 91% 65%;
+    
+    /* Secondary - Dark Cards */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    /* Muted - Subtle Elements */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    /* Accent - Electric Blue */
+    --accent: 217.2 91.2% 59.8%;
+    --accent-foreground: 222.2 84% 4.9%;
+    
+    /* Success - Electric Green */
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --success-glow: 142.1 86% 50%;
+    
+    /* Warning - Electric Orange */
+    --warning: 24.6 95% 53.1%;
+    --warning-foreground: 0 0% 98%;
+    --warning-glow: 24.6 100% 65%;
+    
+    /* Destructive - Electric Red */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --destructive-glow: 0 100% 70%;
+    
+    /* Borders and Inputs */
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 271 76% 53%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-glow)));
+    --gradient-warning: linear-gradient(135deg, hsl(var(--warning)), hsl(var(--warning-glow)));
+    --gradient-card: linear-gradient(135deg, hsl(240 3.7% 15.9% / 0.5), hsl(240 3.7% 15.9% / 0.8));
+    --gradient-bg: radial-gradient(ellipse at center, hsl(271 76% 53% / 0.1), transparent 70%);
+    
+    /* Shadows and Glows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-success: 0 0 30px hsl(var(--success) / 0.3);
+    --shadow-warning: 0 0 30px hsl(var(--warning) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(240 10% 3.9% / 0.4);
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
