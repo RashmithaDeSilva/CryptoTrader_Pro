@@ -7,7 +7,7 @@ CryptoTrader Pro provides users with detailed cryptocurrency trading insights, i
 
 The backend is powered by **n8n**, which handles data fetching, analysis, and generates responses that are sent to the front end.
 
-**URL**: 
+**URL**: [CryptoTrader Pro](https://crypto-trader-pro-iota.vercel.app/)
 
 ---
 

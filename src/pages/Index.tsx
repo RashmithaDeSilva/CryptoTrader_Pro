@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CoinInput } from "@/components/CoinInput";
 import { TradeSuggestions } from "@/components/TradeSuggestions";
+import { WebhookTradingAnalysis } from "@/components/WebhookTradingAnalysis";
 import { Portfolio } from "@/components/Portfolio";
 import { WebhookResponse } from "@/components/WebhookResponse";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -31,6 +32,7 @@ const mockSuggestions = [
 const Index = () => {
   const [selectedCoin, setSelectedCoin] = useState<string>("");
   const [suggestions, setSuggestions] = useState<any[]>([]);
+  const [webhookAnalysis, setWebhookAnalysis] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [webhookData, setWebhookData] = useState<{
     status: 'success' | 'error' | 'pending';
@@ -51,7 +53,7 @@ const Index = () => {
     });
     
     try {
-      const webhookUrl = "<n8n webhook URL>";
+      const webhookUrl = "";
       
       const response = await fetch(webhookUrl, {
         method: "POST",
@@ -69,7 +71,15 @@ const Index = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setSuggestions(data.suggestions || mockSuggestions);
+        
+        // Check if the response has the new webhook format
+        if (Array.isArray(data) && data[0]?.output?.ShortTerm) {
+          setWebhookAnalysis(data);
+          setSuggestions([]);
+        } else {
+          setSuggestions(data.suggestions || mockSuggestions);
+          setWebhookAnalysis([]);
+        }
         
         setWebhookData({
           status: 'success',
@@ -91,6 +101,7 @@ const Index = () => {
       
       // Fallback to mock data if webhook fails
       setSuggestions(mockSuggestions);
+      setWebhookAnalysis([]);
       
       setWebhookData({
         status: 'error',
@@ -156,7 +167,13 @@ const Index = () => {
                 </div>
               )}
               
-              {suggestions.length > 0 && selectedCoin && (
+              {webhookAnalysis.length > 0 && selectedCoin && (
+                <div className="max-w-6xl mx-auto">
+                  <WebhookTradingAnalysis coin={selectedCoin} data={webhookAnalysis} />
+                </div>
+              )}
+              
+              {suggestions.length > 0 && selectedCoin && webhookAnalysis.length === 0 && (
                 <div className="max-w-4xl mx-auto">
                   <TradeSuggestions coin={selectedCoin} suggestions={suggestions} />
                 </div>
