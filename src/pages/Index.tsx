@@ -53,7 +53,10 @@ const Index = () => {
     });
     
     try {
-      const webhookUrl = "";
+      const webhookUrl = "http://localhost:5678/webhook/c01d6t7e-56ba-4he4-9bca-0s7ukc96e10d";
+      
+      // Create AbortController but don't use timeout - let it run indefinitely
+      const controller = new AbortController();
       
       const response = await fetch(webhookUrl, {
         method: "POST",
@@ -65,6 +68,8 @@ const Index = () => {
           timestamp: new Date().toISOString(),
           source: "CryptoTrader Pro"
         }),
+        signal: controller.signal,
+        // Remove any timeout - let it wait as long as needed
       });
 
       const responseTime = Date.now() - startTime;

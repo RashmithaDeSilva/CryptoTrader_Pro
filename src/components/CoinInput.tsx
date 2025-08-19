@@ -72,8 +72,14 @@ export const CoinInput = ({ onSearch, isLoading }: CoinInputProps) => {
             className="w-full h-14 text-lg bg-gradient-primary hover:shadow-glow transition-all duration-300 disabled:opacity-50"
             disabled={isLoading || !coinQuery.trim() || !isValidTradingPair(coinQuery.trim().toUpperCase())}
           >
-            {isLoading ? "Analyzing..." : "Get Trade Suggestions"}
+            {isLoading ? "Analyzing... (2-3 minutes)" : "Get Trade Suggestions"}
           </Button>
+          
+          {isLoading && (
+            <p className="text-sm text-muted-foreground text-center animate-pulse">
+              Please wait, our AI is performing deep market analysis. This typically takes 2-3 minutes.
+            </p>
+          )}
         </form>
 
         <div className="space-y-3">

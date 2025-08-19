@@ -7,13 +7,18 @@ CryptoTrader Pro provides users with detailed cryptocurrency trading insights, i
 
 The backend is powered by **n8n**, which handles data fetching, analysis, and generates responses that are sent to the front end.
 
+![alt text](README_imgs/web-1.png)
+![alt text](README_imgs/web-2.png)
+![alt text](README_imgs/web-3.png)
+![alt text](README_imgs/web-4.png)
+
 **URL**: [CryptoTrader Pro](https://crypto-trader-pro-iota.vercel.app/)
 
 ---
 
 ## Architecture Overview
 
-![n8n Backend Diagram](README_imgs/image.png)  
+![n8n Backend Diagram](README_imgs/n8n.png)  
 
 1. **Frontend**: React-based interface where users input crypto names.  
 2. **Backend**: n8n workflow that fetches market data, performs analysis, and sends results to the frontend.  
